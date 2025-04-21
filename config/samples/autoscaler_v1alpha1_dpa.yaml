@@ -1,0 +1,31 @@
+apiVersion: autoscaler.itscheithanya.com/v1alpha1
+kind: DPA
+metadata:
+  labels:
+    app.kubernetes.io/name: dpa
+    app.kubernetes.io/managed-by: kustomize
+  name: dpa-sample
+spec:
+  deploymentName: loadtestv2
+  namespace: default
+  scrapeURL: 'http://localhost:9091/api/v1/query?query=nginx_http_requests_total'
+  benchmarkURls:
+    - GET:
+        getreq1:   # custom name set by the user of the CR
+          url: 'http://localhost:30438/hello'
+        getreq2: 
+          url: 'http://localhost:30438/users' #use the result of the post request postreq1 here in the params
+          params: '?id=${postreq1.user_id}'
+    - POST:
+        postreq1:
+          url: 'http://localhost:30438/process'
+          payload:
+            some-key1: some-val1
+            some-key2: some-val2
+        postreq2:
+          url: 'http://localhost:30438/create-account'
+          payload:
+            user_name: ohos
+            password: 32444443221
+  dag: [postreq2,getreq1,getreq2,postreq1] # the order is postreq2-->getreq1-->getreq2-->postreq1
+        

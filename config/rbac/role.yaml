@@ -1,0 +1,32 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: manager-role
+rules:
+- apiGroups:
+  - autoscaler.itscheithanya.com
+  resources:
+  - dpas
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - autoscaler.itscheithanya.com
+  resources:
+  - dpas/finalizers
+  verbs:
+  - update
+- apiGroups:
+  - autoscaler.itscheithanya.com
+  resources:
+  - dpas/status
+  verbs:
+  - get
+  - patch
+  - update

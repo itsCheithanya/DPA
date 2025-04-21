@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dpa-ai-model-deployment
+  labels:
+    app: dpa-ai-model
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dpa-ai-model
+  template:
+    metadata:
+      labels:
+        app: dpa-ai-model
+    spec:
+      containers:
+      - name: dpa-ai-model-container
+        image: cheithanya/dynamic-pod-autoscaler-ai-model:latest
+        ports:
+        - containerPort: 8000
+        imagePullPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: dpa-ai-model-service
+spec:
+  type: NodePort
+  selector:
+    app: dpa-ai-model
+  ports:
+  - protocol: TCP
+    port: 8000       # Internal service port
+    targetPort: 8000 # Container port
+    nodePort: 32249  # External NodePort (accessible on host)
