@@ -1,8 +1,8 @@
-# dpa
-// TODO(user): Add simple overview of use/purpose
+# DPA
+DPA autoscaler, paving the way for more resilient and resource-optimized cloud-native applications.
 
 ## Description
-// TODO(user): An in-depth paragraph about your project and overview of use
+Traditional Kubernetes deployments rely on reactive Autoscaling techniques, like the Horizontal Pod Autoscaler (HPA), to regulate the number of pods counts based solely on current workload metrics. However, these native scalability features introduce latency in pod creation and often result in inefficient resource utilization during sudden workload surges. In this work, we introduce a Dynamic Pod Autoscaler (DPA) that leverages a hybrid AI forecasting model combining Bidirectional networks, Long Short-Term Memory (Bi-LSTM) and Gated Recurrent Unit (Bi-GRU). By continuously monitoring application performance metrics via Prometheus and integrating real-time data from HAProxy, our approach proactively predicts future workload trends. This predictive capability enables the system to preemptively adjust pod counts—scaling up to handle anticipated peaks and rapidly scaling down when demand subsides—thus offering superior responsiveness and cost efficiency compared to traditional reactive scaling. Experimental evaluations, including a real-world test on a high-traffic college website, demonstrate that our method not only reduces scaling latency and resource over-provisioning but also achieves optimal performance using fewer pods than the standard HPA. Consequently, our AI-driven dynamic scaling solution provides a robust, scalable, and efficient alternative to Kubernetes’ internal autoscaling mechanisms, paving the way for more resilient and resource-optimized cloud-native applications
 
 ## Getting Started
 
@@ -111,7 +111,7 @@ previously added to 'dist/chart/values.yaml' or 'dist/chart/manager/manager.yaml
 is manually re-applied afterwards.
 
 ## Contributing
-// TODO(user): Add detailed information on how you would like others to contribute to this project
+Contributions welcomed, please contact cheithanya2002@gmail.com
 
 **NOTE:** Run `make help` for more information on all potential `make` targets
 
