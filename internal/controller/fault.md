@@ -1,6 +1,7 @@
-### CORE TODO
-```
+### CORE (TODO)
 We need a way to profile the resources(cpu and memory) that the application might take for a single request so that we can set the limit on the resources and scaling is also optimized based on the resource consumption.because in my DPA scaler this is the metric used and which would make the optimization to the predessesor HPABecause using value of cpu and memory utilization during the start of the pod(overhead) as cpu and mem usage per request is an incorrect  way to obtain the results
+``` sh
+
 OUTPUT:
 -------------------------------------------------------
 The deployment loadtestv2 has 1 pod/pods with 0.000000 avgCPU and 25.300781 avgMem utilization: 
@@ -16,7 +17,7 @@ max workload per pod(which is in rps) should be much higher(like 10000000+) but 
 
 ```
 ### TEST
-
+```go
 package main
 
 import "fmt"
@@ -59,3 +60,4 @@ func main(){
 	fmt.Printf("The current number of pods: %d \n", currentPods)
 	fmt.Printf("scaling decision take to have: %d  of pods\n", predictedFuturePods)
 }
+```
