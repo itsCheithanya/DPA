@@ -20,7 +20,7 @@ sequenceDiagram
 The diagram illustrates several important concepts:
 
 1. **Local Cache Interaction**: 
-          - The controller-runtime client first checks its local cache for matching pods 1:14
+          - The controller-runtime client first checks its local cache for matching pods
   - This improves performance by avoiding unnecessary API server calls
   - The cache is particularly useful for frequently accessed resources
 
